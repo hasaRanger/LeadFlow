@@ -28,6 +28,9 @@ interface SidebarProps {
 
 export default function Sidebar({ user }: SidebarProps) {
     const pathname = usePathname()
+    const activeIndex = navItems.findIndex(({ href }) =>
+        href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href)
+    )
 
     return (
         <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-40">
@@ -47,7 +50,13 @@ export default function Sidebar({ user }: SidebarProps) {
             </div>
 
             {/* Nav */}
-            <nav className="flex-1 p-4 space-y-1">
+            <nav className="flex-1 p-4 relative flex flex-col gap-1">
+                <div
+                    className="absolute left-4 right-4 h-11 rounded-xl bg-blue-600/20 border border-blue-500/20 transition-transform duration-150 ease-out"
+                    style={{
+                        transform: `translateY(${(activeIndex === -1 ? 0 : activeIndex) * 48}px)`,
+                    }}
+                />
                 {navItems.map(({ href, label, icon: Icon }) => {
                     const isActive =
                         href === "/dashboard"
@@ -58,9 +67,9 @@ export default function Sidebar({ user }: SidebarProps) {
                         <Link
                             key={href}
                             href={href}
-                            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${isActive
-                                    ? "bg-blue-600/20 text-blue-400 border border-blue-500/20"
-                                    : "text-slate-400 hover:text-white hover:bg-slate-800"
+                            className={`relative z-10 flex items-center gap-3 px-4 h-11 rounded-xl text-sm font-semibold transition-colors duration-150 ease-in ${isActive
+                                    ? "text-blue-400"
+                                    : "text-slate-400 hover:text-blue-500"
                                 }`}
                         >
                             <Icon className="w-4 h-4" />
@@ -77,7 +86,7 @@ export default function Sidebar({ user }: SidebarProps) {
                         {user.name?.[0]?.toUpperCase() ?? "U"}
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-white text-sm font-medium truncate">
+                        <p className="text-white text-sm font-semibold truncate">
                             {user.name ?? "User"}
                         </p>
                         <p className="text-slate-500 text-xs truncate">{user.email}</p>
@@ -86,7 +95,7 @@ export default function Sidebar({ user }: SidebarProps) {
                 <form action={logout}>
                     <button
                         type="submit"
-                        className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-150"
+                        className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-150"
                     >
                         <LogOut className="w-4 h-4" />
                         Sign out
