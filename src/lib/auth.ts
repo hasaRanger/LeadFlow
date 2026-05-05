@@ -28,7 +28,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
                 if (!user || !user.password) return null
 
-                // Simple password check (plain text for assessment purposes)
+                // Simple password check 
                 if (user.password !== password) return null
 
                 return {
