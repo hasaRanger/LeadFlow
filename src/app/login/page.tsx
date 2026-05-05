@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { login } from "@/app/actions/auth"
-import { Loader2, Lock, Mail, Zap } from "lucide-react"
+import { Loader2, Lock, Mail } from "lucide-react"
+import Image from "next/image"
 
 export default function LoginPage() {
     const [error, setError] = useState<string | null>(null)
@@ -36,8 +37,8 @@ export default function LoginPage() {
             <div className="w-full max-w-md">
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-600 rounded-2xl mb-4 shadow-lg shadow-blue-600/30">
-                        <Zap className="w-7 h-7 text-white" />
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4">
+                        <Image src="/favicon.png" alt="favicon" width={56} height={56} />
                     </div>
                     <h1 className="text-3xl font-bold text-white tracking-tight">
                         LeadFlow
@@ -109,13 +110,6 @@ export default function LoginPage() {
                             )}
                         </button>
                     </form>
-
-                    {/* Test credentials hint */}
-                    <div className="mt-6 pt-5 border-t border-slate-700/50">
-                        <p className="text-xs text-slate-500 text-center">
-                            Test credentials are pre-filled above
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
