@@ -44,9 +44,9 @@ export default function Sidebar({ user }: SidebarProps) {
                     </div>
                     <div>
                         <p className="text-white font-bold text-lg leading-none">
-                            LeadFlow
+                            Lead<span className="text-blue-400">Flow</span>
                         </p>
-                        <p className="text-slate-500 text-xs mt-0.5">CRM Dashboard</p>
+                        <p className="text-slate-400 text-xs mt-0.5">CRM Dashboard</p>
                     </div>
                 </div>
             </div>

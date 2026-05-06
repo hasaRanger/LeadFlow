@@ -56,7 +56,7 @@ function LoginForm() {
                         <Image src="/logo.png" alt="LeadFlow Logo" width={56} height={56} />
                     </div>
                     <h1 className="text-3xl font-bold text-white tracking-tight">
-                        LeadFlow
+                        Lead<span className="text-blue-400">Flow</span>
                     </h1>
                     <p className="text-slate-400 mt-1 text-sm">
                         {mode === "login"

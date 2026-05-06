@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "LeadFlow CRM",
-  description: "A modern CRM for managing your sales pipeline",
+  title: "LeadFlow – Smart CRM for Lead & Pipeline Tracking",
+  description: "Manage leads and track your sales pipeline with a clean, modern CRM.",
+  icons: {
+    icon: "/favicon.png",
+  },
 }
 
 export default function RootLayout({
