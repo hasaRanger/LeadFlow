@@ -3,6 +3,7 @@ import { getLeads, getSalespeople } from "@/lib/leads"
 import { StatusBadge, SourceBadge } from "@/components/LeadBadge"
 import LeadFilters from "@/components/LeadFilters"
 import { Plus, MessageSquare, ExternalLink } from "lucide-react"
+import type { Prisma } from "@prisma/client"
 
 type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
 type LeadSource = "WEBSITE" | "LINKEDIN" | "REFERRAL" | "COLD_EMAIL" | "EVENT" | "OTHER"
@@ -20,7 +21,14 @@ export default async function LeadsPage({ searchParams }: PageProps) {
     const params = await searchParams
     const salespeople = await getSalespeople()
 
-    const leads = await getLeads({
+    type LeadWithRelations = Prisma.LeadGetPayload<{
+        include: {
+            assignedTo: { select: { id: true; name: true; email: true } }
+            _count: { select: { notes: true } }
+        }
+    }>
+
+    const leads: LeadWithRelations[] = await getLeads({
         search: params.search,
         status: params.status as LeadStatus | undefined,
         source: params.source as LeadSource | undefined,
