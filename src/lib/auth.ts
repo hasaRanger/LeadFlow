@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { prisma } from "@/lib/prisma"
 import { z } from "zod"
+import bcrypt from "bcryptjs"
 
 const loginSchema = z.object({
     email: z.string().email(),
@@ -28,8 +29,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
                 if (!user || !user.password) return null
 
-                // Simple password check 
-                if (user.password !== password) return null
+                const passwordMatch = await bcrypt.compare(password, user.password)
+                if (!passwordMatch) return null
 
                 return {
                     id: user.id,
