@@ -4,6 +4,73 @@
 
 A modern, full-stack CRM application for managing sales leads, tracking pipeline progress, and closing more deals.
 
+## Project Structure
+
+```
+LeadFlow/
+├── AGENTS.md                    # Agent customization rules
+├── eslint.config.mjs            # ESLint configuration
+├── LICENSE                      # Project license
+├── next-env.d.ts                # Next.js type definitions
+├── next.config.ts               # Next.js configuration
+├── package.json                 # Node.js dependencies and scripts
+├── postcss.config.mjs           # PostCSS configuration
+├── prisma.config.ts             # Prisma configuration
+├── README.md                    # This file
+├── tsconfig.json                # TypeScript configuration
+├── prisma/                      # Database schema and migrations
+│   ├── schema.prisma            # Prisma schema definition
+│   ├── seed.ts                  # Database seeding script
+│   └── migrations/              # Database migration files
+│       ├── migration_lock.toml
+│       └── 20260505095807_init/
+│           └── migration.sql
+├── public/                      # Static assets
+│   └── logo.png                 # Application logo
+└── src/                         # Source code
+    ├── proxy.ts                 # Next.js proxy middleware for auth
+    └── app/                     # Next.js App Router pages and layouts
+        ├── globals.css          # Global CSS styles
+        ├── layout.tsx           # Root layout component
+        ├── page.tsx             # Landing page
+        ├── actions/             # Server actions
+        │   ├── auth.ts          # Authentication actions
+        │   └── leads.ts         # Lead management actions
+        ├── api/                 # API routes
+        │   └── auth/
+        │       └── [...nextauth]/
+        │           └── route.ts  # NextAuth.js API route
+        ├── dashboard/           # Dashboard pages
+        │   ├── layout.tsx       # Dashboard layout with sidebar
+        │   ├── page.tsx         # Dashboard overview
+        │   └── leads/           # Leads management pages
+        │       ├── page.tsx     # Leads list
+        │       ├── [id]/        # Dynamic lead detail page
+        │       │   └── page.tsx
+        │       └── new/         # New lead creation page
+        │           └── page.tsx
+        ├── login/               # Authentication pages
+        │   └── page.tsx         # Login page
+        ├── components/          # Reusable UI components
+        │   ├── DeleteLeadButton.tsx
+        │   ├── FormField.tsx
+        │   ├── LeadBadge.tsx
+        │   ├── LeadFilters.tsx
+        │   ├── LeadForm.tsx
+        │   ├── Sidebar.tsx
+        │   ├── StatusUpdater.tsx
+        │   └── providers.tsx    # Session provider wrapper
+        ├── lib/                 # Utility libraries
+        │   ├── auth.ts          # Authentication configuration
+        │   ├── dashboard.ts     # Dashboard data fetching
+        │   ├── leads.ts         # Lead data operations
+        │   ├── prisma.ts        # Prisma client instance
+        │   └── schemas/         # Zod validation schemas
+        │       └── lead.ts
+        └── types/               # TypeScript type definitions
+            └── next-auth.d.ts   # NextAuth.js type extensions
+```
+
 ---
 
 ## Tech Stack

@@ -1,7 +1,7 @@
 "use client"
 
 import { updateLeadStatus } from "@/app/actions/leads"
-import { LeadStatus } from "@prisma/client"
+type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
 

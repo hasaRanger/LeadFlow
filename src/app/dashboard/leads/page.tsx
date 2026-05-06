@@ -2,8 +2,10 @@ import Link from "next/link"
 import { getLeads, getSalespeople } from "@/lib/leads"
 import { StatusBadge, SourceBadge } from "@/components/LeadBadge"
 import LeadFilters from "@/components/LeadFilters"
-import { LeadStatus, LeadSource } from "@prisma/client"
 import { Plus, MessageSquare, ExternalLink } from "lucide-react"
+
+type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
+type LeadSource = "WEBSITE" | "LINKEDIN" | "REFERRAL" | "COLD_EMAIL" | "EVENT" | "OTHER"
 
 interface PageProps {
     searchParams: Promise<{

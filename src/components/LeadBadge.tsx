@@ -1,4 +1,5 @@
-import { LeadStatus, LeadSource } from "@prisma/client"
+type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
+type LeadSource = "WEBSITE" | "LINKEDIN" | "REFERRAL" | "COLD_EMAIL" | "EVENT" | "OTHER"
 
 type BadgeConfig = { label: string; className: string }
 
