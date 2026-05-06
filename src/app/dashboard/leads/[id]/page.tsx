@@ -3,10 +3,12 @@ import { getSalespeople } from "@/lib/leads"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft, Mail, Phone, Building2, Calendar } from "lucide-react"
-import { StatusBadge, SourceBadge } from "@/components/LeadBadge"
+import { SourceBadge } from "@/components/LeadBadge"
 import LeadForm from "@/components/LeadForm"
 import DeleteLeadButton from "@/components/DeleteLeadButton"
 import StatusUpdater from "@/components/StatusUpdater"
+import NotesList from "@/components/NotesList"
+import AddNoteForm from "@/components/AddNoteForm"
 
 interface PageProps {
     params: Promise<{ id: string }>
@@ -129,14 +131,20 @@ export default async function LeadDetailPage({ params }: PageProps) {
                 />
             </div>
 
-            {/* Notes placeholder — will be built in next commit */}
+            {/* Notes */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                <h2 className="text-lg font-semibold text-white mb-2">Notes</h2>
-                <p className="text-slate-500 text-sm">
-                    {lead.notes.length === 0
-                        ? "No notes yet."
-                        : `${lead.notes.length} note(s) — notes UI coming next.`}
-                </p>
+                <h2 className="text-lg font-semibold text-white mb-5">
+                    Notes
+                    {lead.notes.length > 0 && (
+                        <span className="ml-2 text-sm font-normal text-slate-500">
+                            ({lead.notes.length})
+                        </span>
+                    )}
+                </h2>
+                <NotesList notes={lead.notes} leadId={lead.id} />
+                <div className="mt-6 pt-6 border-t border-slate-800">
+                    <AddNoteForm leadId={lead.id} />
+                </div>
             </div>
         </div>
     )
