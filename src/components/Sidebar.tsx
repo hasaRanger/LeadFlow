@@ -6,7 +6,6 @@ import { logout } from "@/app/actions/auth"
 import {
     LayoutDashboard,
     Users,
-    PlusCircle,
     LogOut,
 } from "lucide-react"
 import Image from "next/image"
@@ -14,7 +13,7 @@ import Image from "next/image"
 const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/dashboard/leads", label: "Leads", icon: Users },
-    { href: "/dashboard/leads/new", label: "New Lead", icon: PlusCircle },
+    // { href: "/dashboard/leads/new", label: "New Lead", icon: PlusCircle },
 ]
 
 interface SidebarProps {
@@ -27,9 +26,13 @@ interface SidebarProps {
 
 export default function Sidebar({ user }: SidebarProps) {
     const pathname = usePathname()
-    const activeIndex = navItems.findIndex(({ href }) =>
-        href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href)
-    )
+    const activeIndex = navItems.findIndex(({ href }) => {
+        if (href === "/dashboard") {
+            return pathname === "/dashboard"
+        }
+        // Check for exact match first, then prefix match
+        return pathname === href || pathname.startsWith(href + "/")
+    })
 
     return (
         <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-40">
@@ -57,10 +60,9 @@ export default function Sidebar({ user }: SidebarProps) {
                     }}
                 />
                 {navItems.map(({ href, label, icon: Icon }) => {
-                    const isActive =
-                        href === "/dashboard"
-                            ? pathname === "/dashboard"
-                            : pathname.startsWith(href)
+                    const isActive = href === "/dashboard"
+                        ? pathname === "/dashboard"
+                        : pathname === href || pathname.startsWith(href + "/")
 
                     return (
                         <Link
