@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma"
-import { LeadStatus, LeadSource } from "@prisma/client"
+
+type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
+type LeadSource = "WEBSITE" | "LINKEDIN" | "REFERRAL" | "COLD_EMAIL" | "EVENT" | "OTHER"
 
 export interface LeadFilters {
     search?: string

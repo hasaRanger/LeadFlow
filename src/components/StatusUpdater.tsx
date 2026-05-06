@@ -1,9 +1,9 @@
 "use client"
 
 import { updateLeadStatus } from "@/app/actions/leads"
-type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
+import type { LeadStatus } from "@/types/enums"
 
 const statuses: { value: LeadStatus; label: string }[] = [
     { value: "NEW", label: "New" },

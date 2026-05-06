@@ -1,5 +1,4 @@
-type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
-type LeadSource = "WEBSITE" | "LINKEDIN" | "REFERRAL" | "COLD_EMAIL" | "EVENT" | "OTHER"
+import type { LeadStatus, LeadSource } from "@/types/enums"
 
 type BadgeConfig = { label: string; className: string }
 

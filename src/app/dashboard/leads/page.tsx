@@ -3,9 +3,7 @@ import { getLeads, getSalespeople } from "@/lib/leads"
 import { StatusBadge, SourceBadge } from "@/components/LeadBadge"
 import LeadFilters from "@/components/LeadFilters"
 import { Plus, MessageSquare, ExternalLink } from "lucide-react"
-
-type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
-type LeadSource = "WEBSITE" | "LINKEDIN" | "REFERRAL" | "COLD_EMAIL" | "EVENT" | "OTHER"
+import type { LeadStatus, LeadSource } from "@/types/enums"
 
 interface PageProps {
     searchParams: Promise<{

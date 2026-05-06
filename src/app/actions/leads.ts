@@ -5,7 +5,7 @@ import { leadSchema } from "@/lib/schemas/lead"
 import { auth } from "@/lib/auth"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
-type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "PROPOSAL_SENT" | "WON" | "LOST"
+import type { LeadStatus } from "@/types/enums"
 
 export async function createLead(formData: FormData) {
     const session = await auth()
