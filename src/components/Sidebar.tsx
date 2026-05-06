@@ -40,7 +40,13 @@ export default function Sidebar({ user }: SidebarProps) {
             <div className="p-6 border-b border-slate-800">
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center">
-                        <Image src="/logo.png" alt="logo" width={56} height={56} />
+                        <Image 
+                            src="/logo.png" 
+                            alt="logo" 
+                            width={56} 
+                            height={56}
+                            loading="eager" 
+                        />
                     </div>
                     <div>
                         <p className="text-white font-bold text-lg leading-none">

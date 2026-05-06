@@ -34,6 +34,7 @@ export default function Home() {
           alt="logo"
           width={150}
           height={20}
+          loading="eager"
           priority
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-center sm:text-center mt-5">

@@ -53,7 +53,13 @@ function LoginForm() {
                 {/* Logo */}
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-full">
-                        <Image src="/logo.png" alt="LeadFlow Logo" width={56} height={56} />
+                        <Image 
+                            src="/logo.png" 
+                            alt="LeadFlow Logo" 
+                            width={56} 
+                            height={56}
+                            loading="eager" 
+                        />
                     </div>
                     <h1 className="text-3xl font-bold text-white tracking-tight">
                         Lead<span className="text-blue-400">Flow</span>
