@@ -281,10 +281,6 @@ Every blocker encountered — from Prisma 7 config changes to Next.js 16 proxy m
 
 ---
 
-## Demo Video
-
-[Link to be added after recording]
-
 ## Deployed Application
 
-[Link to be added after Vercel deployment]
+https://lead-flow-chi.vercel.app/
